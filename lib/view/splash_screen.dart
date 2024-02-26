@@ -25,8 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
     // User is logged in, navigate to NewsRoom
     Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
+      context, MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
   @override

@@ -16,18 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Grievance portal',
-      theme: ThemeData(
-        buttonTheme: ButtonThemeData(
-          buttonColor: ColorsData.primaryColor,
-          textTheme: ButtonTextTheme.primary,
-          // You can define more button properties here as needed
-        ),
-        // Use your custom theme data here
-        primaryColor: ColorsData.primaryColor,
-        secondaryHeaderColor: ColorsData.secondaryColor,
-
-      ),
-      home: SplashScreen(),
+      theme: themeData,
+      home: const SplashScreen(),
     );
   }
 }

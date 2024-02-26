@@ -8,11 +8,12 @@ class CustomTextField extends StatefulWidget {
   final String? initialValue;
   final void Function(String) onChanged;
   final String label;
-  final String validatorLable;
+  final String validatorLabel;
   final List<TextInputFormatter>? inputFormatters;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final bool obscured;
+  final bool validator;
   final dynamic suffixIcon;
   final dynamic maxline;
 
@@ -20,12 +21,12 @@ class CustomTextField extends StatefulWidget {
       {super.key,
         required this.label,
         this.inputFormatters,
-        required this.validatorLable,
+        required this.validatorLabel,
         this.initialValue,
         required this.onChanged,
         this.controller,
         this.obscured = false,
-        this.suffixIcon, this.keyboardType, this.maxline});
+        this.suffixIcon, this.keyboardType, this.maxline, required this.validator});
 
   @override
   @override
@@ -56,28 +57,24 @@ class _CustomTextField extends State<CustomTextField> {
       maxLines: widget.maxline,
       style: const TextStyle( fontSize: 18,color: ColorsData.darkGrayColor),
       inputFormatters: widget.inputFormatters,
-      validator:(val) {
-        if (val == '') return 'Enter a valid ${widget.validatorLable}';
+      validator: (val) {
+        // Check if widget.validator is not null
+        if (widget.validator != false) {
+          // If the value is empty, return an error message
+          if (val == '') return 'Enter a valid ${widget.validatorLabel}';
+        }
+        // If widget.validator is null, return null indicating no error
         return null;
       },
+
       controller: widget.controller ?? _controller,
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorsData.darkGrayColor),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorsData.darkGrayColor),
-          ),
           contentPadding: const EdgeInsets.all(16),
           suffixIcon: widget.suffixIcon,
-          border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))),
           hintText:  widget.label,
-          hintStyle: TextStyle(color: ColorsData.darkGrayColor),
-          fillColor: Colors.white,
           filled: true),
       obscureText: widget.obscured,
     );

@@ -1,5 +1,4 @@
 import 'package:grievanceportal/utils/API.dart';
-
 import 'config/route.dart';
 
 class Configuration{

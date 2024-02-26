@@ -1,4 +1,59 @@
 import 'package:flutter/material.dart';
+  ColorScheme myColorScheme =  const ColorScheme.light(
+primary: Color(0xFF333333), // Corresponds to text color in CSS
+secondary: Color(0xFFF0F0F0), // Corresponds to background color in CSS
+    primaryContainer: Color(0xFF3fbbc0),
+surface: Color(0xFFF0F0F0), // Corresponds to background color in CSS
+background: Color(0xFFF0F0F0), // Corresponds to background color in CSS
+error: Colors.red, // Placeholder color for error
+onPrimary: Color(0xFFF0F0F0), // Corresponds to background color in CSS
+onSecondary: Color(0xFF333333), // Corresponds to text color in CSS
+onSurface: Color(0xFF333333), // Corresponds to text color in CSS
+onBackground: Color(0xFF333333), // Corresponds to text color in CSS
+onError: Colors.white, // Text color for error messages
+brightness: Brightness.light, // Assuming light theme
+);
+   ThemeData themeData= ThemeData(
+    colorScheme: myColorScheme,
+     appBarTheme:   AppBarTheme(
+      toolbarHeight: 65,
+      elevation: 0,
+  iconTheme: IconThemeData(
+    color: myColorScheme.primary, // Color of the icons in the app bar
+  ),
+),
+buttonTheme:  ButtonThemeData(
+buttonColor: myColorScheme.primaryContainer, // Button color
+textTheme: ButtonTextTheme.primary, // Button text color
+),
+textTheme: const TextTheme(
+  titleLarge: TextStyle(
+      fontSize: 20,
+      color: ColorsData.whiteColor,
+    fontWeight: FontWeight.bold
+  ),
+ bodySmall: TextStyle(
+   fontSize: 16,
+   color: ColorsData.darkGrayColor
+ )
+),
+inputDecorationTheme: const InputDecorationTheme(
+enabledBorder: OutlineInputBorder(
+borderSide: BorderSide(color: ColorsData.darkGrayColor),
+),
+focusedBorder: OutlineInputBorder(
+borderSide: BorderSide(color: ColorsData.darkGrayColor),
+),
+contentPadding: EdgeInsets.all(16),
+border: OutlineInputBorder(
+borderRadius: BorderRadius.all(Radius.circular(10)),
+),
+hintStyle: TextStyle(color: ColorsData.darkGrayColor),
+fillColor: Colors.white,
+filled: true,
+),
+);
+
 
 class ColorsData {
   // Common Colors
@@ -7,7 +62,7 @@ class ColorsData {
   static const Color textColor = Color(0xFF444444);
   static const Color whiteColor = Colors.white;
   static const Color shadowColor = Color.fromRGBO(0, 0, 0, 0.1);
-  static const Color darkGrayColor = Color(0xFF555555);
+  static const Color darkGrayColor = Color(0xFF333333);
 
   // Color for preloader
   static const Color preloaderBorderColor = primaryColor;

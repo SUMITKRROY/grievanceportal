@@ -18,11 +18,12 @@ class _GrievancescreenState extends State<Grievancescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
+        titleSpacing: 1,
+       // toolbarHeight: 80,
         title: CustomAppBar(),
       ),
       drawer: Drawer(
-        child: ListView(
+        child:ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
@@ -32,7 +33,7 @@ class _GrievancescreenState extends State<Grievancescreen> {
               child: Column(
                 children: [
                   CircleAvatar(
-              radius: 45,
+                    radius: 45,
                     backgroundImage: AssetImage(ImagePath.profile,),
                   ),
                   SizedBox(height: 08), // Add some space between avatar and text
@@ -43,19 +44,24 @@ class _GrievancescreenState extends State<Grievancescreen> {
                       fontSize: 20,
                     ),
                   ),
-
                 ],
               ),
             ),
-           // Divider(),
+            // Divider(),
             ListTile(
-              title: Text('Home'),
+              title: Text('Grievance'),
               onTap: () {
                 // Add your onTap functionality here
               },
             ),
             ListTile(
-              title: Text('NotiFICATION'),
+              title: Text('Notification'),
+              onTap: () {
+                // Add your onTap functionality here
+              },
+            ),
+            ListTile(
+              title: Text('Setting'),
               onTap: () {
                 // Add your onTap functionality here
               },
@@ -66,8 +72,47 @@ class _GrievancescreenState extends State<Grievancescreen> {
                 // Add your onTap functionality here
               },
             ),
+            ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                      Theme.of(context).colorScheme.primaryContainer)),
+              onPressed: () {
+                showBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      // Modify the bottom sheet content as needed
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'Logout',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 16.0),
+                          ElevatedButton(
+                            onPressed: () {
+                              // Add logout functionality here
+                            },
+                            child: Text('Logout'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Text('Logout'),
+            ),
           ],
         ),
+
       ),
 
       body: Container(),

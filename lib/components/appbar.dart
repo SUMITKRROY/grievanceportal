@@ -14,9 +14,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(ImagePath.logo,height: AppSizes.largeIconSize*3,),
+      contentPadding: EdgeInsets.zero,
+      leading: Image.asset(ImagePath.logo,height: AppSizes.largeIconSize*2,),
       title: Text(CommonText.santusht,style: TextStyle(fontSize: AppSizes.largeTextSize),),
-      subtitle: const Text("All India Institute Of Medical Sciences",style: TextStyle(fontSize: AppSizes.smallTextSize),),
+      subtitle: const Text("All India Institute Of Medical Sciences\nNew Delhi",style: TextStyle(fontSize: AppSizes.smallTextSize),),
     );
   }
 }
