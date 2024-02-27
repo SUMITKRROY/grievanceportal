@@ -38,6 +38,9 @@ dependencies:
   flutter_screenutil: ^5.9.0
   flutter_bloc: ^8.1.4
   dio: ^5.4.1
+  permission_handler: ^11.3.0
+  image_picker: ^1.0.7
+  #app_settings: ^5.1.1
 
 dev_dependencies:
   flutter_test:

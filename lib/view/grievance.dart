@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grievanceportal/utils/image.dart';
 import 'package:grievanceportal/config/theamdata.dart';
+import 'package:grievanceportal/view/profile.dart';
 
 import '../components/appbar.dart';
 import '../components/button.dart';
@@ -48,6 +49,12 @@ class _GrievancescreenState extends State<Grievancescreen> {
               ),
             ),
             // Divider(),
+            ListTile(
+              title: Text('Profile'),
+              onTap: () {
+               Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreen()));
+              },
+            ),
             ListTile(
               title: Text('Grievance'),
               onTap: () {
