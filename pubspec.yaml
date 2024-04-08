@@ -1,5 +1,5 @@
 name: grievanceportal
-description: "A new Flutter project."
+description: "Simplify staff transportation with our user-friendly cycle rental service. Staff can quickly browse and book cycles through the app, promoting eco-friendly commuting within the AIIMS campus."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -40,6 +40,8 @@ dependencies:
   dio: ^5.4.1
   permission_handler: ^11.3.0
   image_picker: ^1.0.7
+  flutter_spinkit: ^5.2.0
+  crypto: ^3.0.3
   #app_settings: ^5.1.1
 
 dev_dependencies:
@@ -67,6 +69,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/images/
+
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

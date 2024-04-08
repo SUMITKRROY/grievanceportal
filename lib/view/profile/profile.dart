@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:grievanceportal/utils/image.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../components/custom_TextFeild.dart';
+import '../../components/custom_TextFeild.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -65,7 +65,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             backgroundColor:
                                                 Colors.grey,
                                             child:
-                                                const Text("Tap to select image"))))
+                                                const Text("Tap to select image")))
+                            )
                                 : GestureDetector(
                                     onTap: () {
                                       _showPicker(context);

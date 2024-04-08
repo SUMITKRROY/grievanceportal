@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
@@ -12,11 +15,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
     on<GetPhoneNo>((event, emit) async {
       // TODO: implement event handler
+      emit(LoginLoading());
       try{
         var headers = {
           'Content-Type': 'application/x-www-form-urlencoded',
-          '': '',
-          'Cookie': 'JSESSIONID=EE412AABC98D89179CF40452B4BF0014'
+          '': ''
         };
         var dio = Dio();
         var response = await dio.request(
@@ -25,17 +28,48 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             method: 'POST',
             headers: headers,
           ),
-        );
+        ).timeout(Duration(seconds: 15));
+
         if (response.statusCode == 200) {
-          print("data ${response.runtimeType}");
-          print(json.encode(response.data));
+          log(json.encode(response.data));
+          emit(LoginSuccess());
         }
         else {
-          print(response.statusMessage);
+          log("response.statusMessage");
         }
       } catch(e){
-
+log("e $e");
       }
+    });
+    on<SentOtp>((event, emit) async {
+    emit(LoginLoading());
+      try{
+        var headers = {
+          'Content-Type': 'application/json',
+        };
+        var data = json.encode({
+          "username": event.phone
+        });
+        var dio = Dio();
+        var response = await dio.request(
+          'https://cfapplication.aiims.edu/santusht/otp_auth',
+          options: Options(
+            method: 'POST',
+            headers: headers,
+          ),
+          data: data,
+        ).timeout(Duration(seconds: 15));
+
+        if (response.statusCode == 200) {
+          log(json.encode(response.data));
+        }
+        else {
+          log("${response.statusMessage}");
+        }
+      }catch(e){
+       log("e $e");
+      }
+
     });
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grievanceportal/utils/image.dart';
 import 'package:grievanceportal/config/theamdata.dart';
-import 'package:grievanceportal/view/profile.dart';
+import 'package:grievanceportal/view/profile/profile.dart';
 
 import '../components/appbar.dart';
 import '../components/button.dart';
@@ -26,10 +26,11 @@ class _GrievancescreenState extends State<Grievancescreen> {
       drawer: Drawer(
         child:ListView(
           padding: EdgeInsets.zero,
+          shrinkWrap: true,
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: ColorsData.primaryColor,
+                color: Theme.of(context).secondaryHeaderColor,
               ),
               child: Column(
                 children: [
@@ -48,6 +49,7 @@ class _GrievancescreenState extends State<Grievancescreen> {
                 ],
               ),
             ),
+
             // Divider(),
             ListTile(
               title: Text('Profile'),
@@ -84,36 +86,7 @@ class _GrievancescreenState extends State<Grievancescreen> {
                   backgroundColor: MaterialStateProperty.all(
                       Theme.of(context).colorScheme.primaryContainer)),
               onPressed: () {
-                showBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Container(
-                      // Modify the bottom sheet content as needed
-                      padding: EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            'Logout',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 16.0),
-                          ElevatedButton(
-                            onPressed: () {
-                              // Add logout functionality here
-                            },
-                            child: Text('Logout'),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                );
+                // Add logout functionality here
               },
               child: Text('Logout'),
             ),

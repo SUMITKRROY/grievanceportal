@@ -1,9 +1,15 @@
 part of 'login_bloc.dart';
 
-@immutable
+
 abstract class LoginEvent {}
 class GetPhoneNo extends LoginEvent{
-  int phone;
+  String phone;
+
 
   GetPhoneNo({ required this.phone});
+}
+class SentOtp extends LoginEvent{
+  String phone;
+
+  SentOtp(this.phone);
 }

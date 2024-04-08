@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:grievanceportal/route/route_generater.dart';
 import 'package:grievanceportal/utils/helper_text.dart';
 import 'package:grievanceportal/utils/image.dart';
 import 'package:grievanceportal/config/theamdata.dart';
+import 'package:grievanceportal/utils/pageroute.dart';
 import 'package:grievanceportal/utils/utils.dart';
 import 'package:grievanceportal/view/login.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -63,18 +63,20 @@ try{
   }
 
   Future<void> _navigater() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     // User is logged in, navigate to NewsRoom
-    Navigator.pushReplacement(
-      context, MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+    if (mounted) {
+      MyRoutes.navigateToHome(context);
+      // Navigator.pushReplacementNamed(context, RoutePath.login);
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => const LoginPage()),
+      // );
+    }
+
   }
   @override
   Widget build(BuildContext context) {
-    Size screenSize = Utils.getScreenSize(context);
-    double screenHeight = Utils.getScreenHeight(context);
-    double screenWidth = Utils.getScreenWidth(context);
-
     return Scaffold(
      body: Padding(
        padding: const EdgeInsets.all(8.0),
@@ -83,14 +85,14 @@ try{
          children: [
            Image.asset(ImagePath.logo,height: Utils.getScreenHeight(context)/3,),
        Utils.getSizedBoxHeight(8.0),
-           Align(
+           const Align(
              alignment: Alignment.center,
              child: Text("AIIMS Delhi",style: TextStyle(fontSize: AppSizes.mediumTextSize*2),),
            ),
            Utils.getSizedBoxHeight(24.0),
            Align(
              alignment: Alignment.bottomCenter,
-             child: Text("${CommonText.santusht}",style: TextStyle(fontSize: AppSizes.largeTextSize*2),),
+             child: Text("${CommonText.santusht}",style: const TextStyle(fontSize: AppSizes.largeTextSize*2),),
            ),
          ],
        ),
